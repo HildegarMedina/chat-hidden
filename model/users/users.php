@@ -4,7 +4,7 @@
     class Users_Model {
 
         //Datos del usuario
-        private $nick, $hash;
+        public $nick, $hash;
 
         //Constructor
         public function __construct($nk, $hs) {
@@ -13,11 +13,6 @@
             $this->nick = $nk;
             $this->hash = $hs;
 
-        }
-
-        //Mostrar nick
-        public function showNick() {
-            echo $this->nick;
         }
 
         //Buscar usuario por hash
@@ -29,7 +24,7 @@
             $db = Connection::connect();
 
             //Consulta
-            $sql = "SELECT nick FROM 'user' WHERE hash = :hash";
+            $sql = "SELECT nick FROM users WHERE hash = :hash";
 
             //Preparar consulta
             $resultado = $db->prepare($sql);
@@ -44,7 +39,7 @@
             if ($count > 0) {
                 
                 while($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
-                    $nick = $row["name"]; 
+                    $nick = $row["nick"]; 
                 }
 
                 return $nick;

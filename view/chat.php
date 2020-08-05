@@ -21,7 +21,11 @@
 
     <!-- CONTENT -->
     <main>
-        <h2>WELCOME BUDDY</h2>
+        <div class="container">
+            <div class="mt-4 mx-auto p-5 border rounded bg-white">
+                <h2 class="d-block text-center">Welcome <?php echo $user->nick; ?></h2>
+            </div>
+        </div>
     </main>
 
     <!-- SCRIPTS : JS -->
