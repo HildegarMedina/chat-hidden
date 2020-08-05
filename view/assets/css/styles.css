@@ -11,3 +11,6 @@ body, html {
 #form-new {
     max-width: 600px;
 }
+#hash {
+    background: #f7f7f7 !important;
+}

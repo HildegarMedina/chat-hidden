@@ -23,7 +23,7 @@
     <main>
         <div class="container">
         
-            <form action="#" id="form-new" class="mt-4 mx-auto p-5 border rounded bg-white">
+            <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" id="form-new" class="mt-4 mx-auto p-5 border rounded bg-white">
 
                 <h2>Welcome, you need create a account temporary</h2>
             
@@ -34,10 +34,10 @@
 
                 <div class="form-group">
                     <label for="hash">Your Hash</label>
-                    <input type="text" class="form-control" id="hash">
+                    <span class="form-control" id="hash"><?php $number = rand(1000000000000, 9999999999999); echo md5("$number"); ?></span>
                 </div>
 
-                <p class="">Important: your hast is used for that other user chat with you</p>
+                <p>Important: your hast is used for that other user chat with you</p>
 
                 <input type="submit" class="btn btn-dark btn-block" value="Join now">
 
