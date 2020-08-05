@@ -3,24 +3,24 @@
     //Clase conexión
     class Connection {
         
-        public static connection() {
+        public static function connect () {
 
             try {
                 
                 //Crear objeto conexión
-                $connection = new PDO("mysql:dbname=chat-hidden;host=localhost", "root", "");
+                $connect = new PDO("mysql:dbname=chat_hidden;host=localhost", "root", "");
 
                 //Establecer atributos
-                $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 //Retornar conexión
-                return $connection;
+                return $connect;
 
                 
             } catch (Exception $e) {
 
                 //En caso de error, muestrame el mensaje
-                return $e->getMessage();
+                die($e->getMessage());
 
             }
 

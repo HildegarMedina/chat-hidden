@@ -18,7 +18,7 @@
 
     //Si no se envío
     }else {
-        
+
         //Mostrar el formulario de bienvenida
         $user->home();
 

@@ -26,7 +26,7 @@
             require_once("config/connection.php");
             
             //Hacemos la conexión
-            $db = Connection::connection();
+            $db = Connection::connect();
 
             //Consulta
             $sql = "SELECT nick FROM 'user' WHERE hash = :hash";
@@ -61,10 +61,10 @@
             require_once("config/connection.php");
             
             //Hacemos la conexión
-            $db = Connection::connection();
+            $db = Connection::connect();
 
             //Consulta
-            $sql = "INSERT INTO `users`(`hash`, `nick`, `date`) VALUES (:hash ,:nick , NOW())";
+            $sql = "INSERT INTO `users`(`hash`, `nick`, `date`) VALUES (:hash , :nick , NOW())";
 
             //Preparar consulta
             $resultado = $db->prepare($sql);
