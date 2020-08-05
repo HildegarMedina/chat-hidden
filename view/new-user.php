@@ -39,7 +39,7 @@
 
                 <p>Important: your hast is used for that other user chat with you</p>
 
-                <input type="submit" class="btn btn-dark btn-block" value="Join now">
+                <input type="submit" class="btn btn-dark btn-block" value="Join now" value="send">
 
             </form>
 

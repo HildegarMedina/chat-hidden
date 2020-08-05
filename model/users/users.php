@@ -55,6 +55,34 @@
             
         }
 
+        //Ingresar usuario a la base de datos
+        public function addUser() {
+
+            require_once("config/connection.php");
+            
+            //Hacemos la conexión
+            $db = Connection::connection();
+
+            //Consulta
+            $sql = "INSERT INTO `users`(`hash`, `nick`, `date`) VALUES (:hash ,:nick , NOW())";
+
+            //Preparar consulta
+            $resultado = $db->prepare($sql);
+
+            //Ejecutar consulta
+            $resultado->execute(array(":hash"=>$this->hash, ":nick"=>$this->nick));
+
+            //Verificar que si se haya ingresado
+            $count = $resultado->rowCount();
+
+            //Si se ingresó
+            if ($count > 0) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+
     }
     
 ?>

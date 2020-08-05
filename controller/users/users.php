@@ -35,6 +35,26 @@
 
         }
 
+        //Mostrar home
+        public function userNew ($nick, $hash) {
+            
+            //Lamar el modelo usuario
+            require_once("model/users/users.php");
+
+            //Creamos la instancia del usuario
+            $user = new Users_Model($nick, $hash);
+
+            //Agregamos el usuario a la base de datos
+            $resultado = $user->addUser();
+
+            //Si se ingresa el usuario
+            if ($resultado) {
+                require_once("view/chat.php");
+            }else {
+                require_once("view/new-user.php?msg=error");
+            }
+
+        }
 
     }
     
