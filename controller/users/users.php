@@ -26,8 +26,18 @@
 
                 //Si no se encuentra
                 if (!$result) {
+
+                    //Ver formulario para nuevo usuario
                     require_once("view/new-user.php");
+
+                    //Eliminar hash
+                    setcookie("hash", "", time()-1);
                 }else {
+
+                    //Crear instancia de usuario
+                    $user = new Users_Model($result, $hash);
+
+                    //Ver ventana principal del chat
                     require_once("view/chat.php");
                 }
 
@@ -49,6 +59,10 @@
 
             //Si se ingresa el usuario
             if ($resultado) {
+
+                //Establecer cookie del token
+                setcookie("hash", $hash, time()+3600000, "localhost/chat-hidden/");
+
                 require_once("view/chat.php");
             }else {
                 require_once("view/new-user.php?msg=error");

@@ -6,6 +6,14 @@
     //Instancia controlador usuario
     $user = new Users_Controller();
 
+    //En caso de que exista la cookie
+    if (isset($_COOKIE["hash"])) {
+        
+        //Mostrar el formulario de bienvenida
+        $user->home();
+        
+    }
+
     //En caso de que se haya enviado el formulario
     if (isset($_POST["send"])) {
         
