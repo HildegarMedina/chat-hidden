@@ -70,6 +70,47 @@
 
         }
 
+        //Destruir usuario
+        public function destroy () {
+
+            //Lamar el modelo usuario
+            require_once("model/users/users.php");
+
+            //Tomamos el hash de la cookie
+            $hash = $_COOKIE["hash"];
+
+            //Verificamos que esté en la base de datos
+            $result = Users_Model::searchUser($hash);
+
+            //Si no se encuentra
+            if (!$result) {
+
+                //Eliminar hash
+                setcookie("hash", "", time()-1);
+
+                //Ir a inicio
+                header("location:index.php");
+
+            }else {
+
+                //Crear instancia de usuario
+                $user = new Users_Model($result, $hash);
+
+                //Destruir usuario
+                $destroy = $user->destroy();
+
+                //Si se destruyó el usuario
+                if ($destroy) {
+                    //Eliminar hash
+                    setcookie("hash", "", time()-1);
+                }
+
+                //Ir al inicio
+                header("location:index.php");
+            }
+
+        }
+
     }
     
 ?>

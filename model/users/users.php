@@ -78,6 +78,34 @@
             }
         }
 
+        //Eliminar usuario de la base de datos
+        public function destroy() {
+
+            require_once("config/connection.php");
+            
+            //Hacemos la conexión
+            $db = Connection::connect();
+
+            //Consulta
+            $sql = "DELETE FROM users WHERE hash = :hash";
+
+            //Preparar consulta
+            $resultado = $db->prepare($sql);
+
+            //Ejecutar consulta
+            $resultado->execute(array(":hash"=>$this->hash));
+
+            //Verificar que si se haya ingresado
+            $count = $resultado->rowCount();
+
+            //Si se eliminó
+            if ($count > 0) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+
     }
     
 ?>

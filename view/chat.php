@@ -24,6 +24,22 @@
         <div class="container">
             <div class="mt-4 mx-auto p-5 border rounded bg-white">
                 <h2 class="d-block text-center">Welcome <?php echo $user->nick; ?></h2>
+    
+                <form action="#" id="form-chat" class="mx-auto">
+    
+                    <div class="form-group">
+                        <label for="chat-with">Chat with...</label>
+                        <input type="text" class="form-control" id="chat-with" placeholder="hash...">
+                    </div>
+    
+                    <div class="form-group">
+                        <input type="submit" name="join-chat" value="Join chat!" class="btn btn-primary btn-block">
+                    </div>
+    
+                </form>
+
+                <a href="destroy.php" class="text-center text-danger d-block">Destroy user</a>
+
             </div>
         </div>
     </main>

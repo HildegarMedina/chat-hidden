@@ -8,7 +8,7 @@ body, html {
     font-size: 16px;
 }
 
-#form-new {
+#form-new, #form-chat {
     max-width: 600px;
 }
 #hash {
