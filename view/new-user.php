@@ -6,9 +6,9 @@
     <title>Chat Hidden - Welcome</title>
 
     <!-- STYLES : CSS -->
-    <link rel="stylesheet" href="../view/assets/css/normalize.css">
-    <link rel="stylesheet" href="../view/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../view/assets/css/styles.css">
+    <link rel="stylesheet" href="view/assets/css/normalize.css">
+    <link rel="stylesheet" href="view/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="view/assets/css/styles.css">
 </head>
 <body>
 
@@ -47,9 +47,9 @@
     </main>
 
     <!-- SCRIPTS : JS -->
-    <script src="../view/assets/js/jquery-3.4.1.min.js"></script>
-    <script src="../view/assets/js/bootstrap.min.js"></script>
-    <script src="../view/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="view/assets/js/jquery-3.4.1.min.js"></script>
+    <script src="view/assets/js/bootstrap.min.js"></script>
+    <script src="view/assets/js/bootstrap.bundle.min.js"></script>
     
 </body>
 </html>

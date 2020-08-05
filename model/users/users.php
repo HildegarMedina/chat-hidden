@@ -3,8 +3,6 @@
     //Clase user
     class Users_Model {
 
-        require_once("config/connection.php");
-        
         //Datos del usuario
         private $nick, $hash;
 
@@ -24,6 +22,8 @@
 
         //Buscar usuario por hash
         public static function searchUser($hash) {
+
+            require_once("config/connection.php");
             
             //Hacemos la conexión
             $db = Connection::connection();
@@ -32,7 +32,7 @@
             $sql = "SELECT nick FROM 'user' WHERE hash = :hash";
 
             //Preparar consulta
-            $resultado = $db->prepare($sql)
+            $resultado = $db->prepare($sql);
 
             //Ejecutar consulta
             $resultado->execute(array(":hash"=>$hash));

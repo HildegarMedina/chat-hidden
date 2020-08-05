@@ -3,17 +3,18 @@
     //Clase user
     class Users_Controller {
 
-        //Constructor
-        public function welcome ($nk, $hs) {
-
+        
+        //Mostrar home
+        public function home () {
+            
             //Lamar el modelo usuario
             require_once("model/users/users.php");
 
             //Si no existe una cookie de sesión
             if (!isset($_COOKIE["hash"])) {
                 
-                //Hacer instancia de usuario con su hash
-                $user = new Users_Model($nk, $hs);
+                //Mostrar el formulario de inicio de sesión
+                require_once("view/new-user.php");
                 
             }else {
                 
@@ -25,9 +26,9 @@
 
                 //Si no se encuentra
                 if (!$result) {
-                    require_once("views/new_user.php");
+                    require_once("view/new-user.php");
                 }else {
-                    require_once("views/chat.php");
+                    require_once("view/chat.php");
                 }
 
             }
