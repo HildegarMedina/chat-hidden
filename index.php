@@ -14,16 +14,25 @@
         
     }
 
-    //En caso de que se haya enviado el formulario
+    //En caso de que se haya enviado el formulario de ingreso
     if (isset($_POST["send"])) {
         
         //Obtener datos
         $nick = $_POST["nick"];
         $hash = $_POST["hash"];
 
-        //Agregar el usaurio nuevo
+        //Agregar el usuario nuevo
         $user->userNew($nick, $hash);
 
+    //En caso de que se haya enviado el formulario de unirse al chat
+    }else if(isset($_POST["join-chat"])) {
+
+        //Obtener datos
+        $hashjoin = $_POST["hash"];
+
+        //Nos unimos al chat
+        $user->join($hashjoin);
+        
     //Si no se envío
     }else {
 

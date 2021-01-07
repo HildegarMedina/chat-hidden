@@ -52,7 +52,7 @@
             
                 <div class="form-group">
                     <label for="nick">Nick</label>
-                    <input type="text" class="form-control" id="nick" name="nick">
+                    <input type="text" class="form-control" id="nick" name="nick" required>
                 </div>
 
                 <div class="form-group">

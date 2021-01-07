@@ -1,19 +1,9 @@
-<?php 
-
-    //Si existe algún mensaje, almacenalo
-    if (isset($_GET["msg"])) {
-        $msg = $_GET["msg"];
-    }else {
-        $msg = "";
-    }
-
-?>
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Hidden - Chat</title>
+    <title>Chat Hidden - Chat Join</title>
 
     <!-- STYLES : CSS -->
     <link rel="stylesheet" href="view/assets/css/normalize.css">
@@ -37,26 +27,7 @@
     
                 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" id="form-chat" class="mx-auto">
     
-                    <?php 
-
-                        //Si el mensaje es de error
-                        if ($msg == "user-not-found") {
-                            echo '
-                            <div class="alert alert-danger" role="alert">
-                                <strong>¡Ups!</strong> No se ha encontrado el usuario
-                            </div>';
-                        }
-
-
-                    ?>
-                    <div class="form-group">
-                        <label for="chat-with">Chat with...</label>
-                        <input type="text" class="form-control" name="hash" id="chat-with" placeholder="hash...">
-                    </div>
-    
-                    <div class="form-group">
-                        <input type="submit" name="join-chat" value="Join chat!" class="btn btn-primary btn-block">
-                    </div>
+                  
     
                 </form>
 

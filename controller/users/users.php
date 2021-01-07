@@ -2,7 +2,6 @@
 
     //Clase user
     class Users_Controller {
-
         
         //Mostrar home
         public function home () {
@@ -45,6 +44,25 @@
 
         }
 
+        //Buscar usuario
+        public function join($hash) {
+            
+            //Lamar el modelo usuario
+            require_once("model/users/users.php");
+
+            //Verificamos que esté en la base de datos
+            $result = Users_Model::searchUser($hash);
+
+            //Si no existe
+            if (!$result) {
+                require_once("view/chat.php");
+                header("location:index.php?msg=user-not-found");
+            }else {
+                require_once("view/chat-join.php");
+            }
+
+        }
+
         //Mostrar home
         public function userNew ($nick, $hash) {
             
@@ -65,7 +83,7 @@
 
                 require_once("view/chat.php");
             }else {
-                require_once("view/new-user.php?msg=error");
+                require_once("view/new-user.php");
             }
 
         }
