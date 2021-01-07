@@ -2,6 +2,7 @@
 
     //Llamar al controlador
     require_once("controller/users/users.php");
+    require_once("controller/users/users.php");
     
     //Instancia controlador usuario
     $user = new Users_Controller();
@@ -31,7 +32,7 @@
         $hashjoin = $_POST["hash"];
 
         //Nos unimos al chat
-        $user->join($hashjoin);
+        Chat_Controller::join($hashjoin);
         
     //Si no se envío
     }else {

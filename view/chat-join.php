@@ -29,35 +29,20 @@
     
                     <div class="messages">
                     
-                        <div class="msgme mb-3">
-                            <h5 class="mb-0"><b>Usuario:</b></h5>
-                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, officia.</p>
-                        </div>
+                        <?php 
 
-                        <div class="msghe mb-3">
-                            <h5 class="mb-0"><b>Usuario:</b></h5>
-                            <p class="mb-0">Lorem ipsum dolor sit.</p>
-                        </div>
+                            //Requerir modulo
+                            require_once("controller/chat/chat.php");
+                        
+                            //Mostrar mensajes
+                            echo Chat_Controller::showChat();
 
-                        <div class="msgme mb-3">
-                            <h5 class="mb-0"><b>Usuario:</b></h5>
-                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, officia.</p>
-                        </div>
-
-                        <div class="msghe mb-3">
-                            <h5 class="mb-0"><b>Usuario:</b></h5>
-                            <p class="mb-0">Lorem ipsum dolor sit.</p>
-                        </div>
-
-                        <div class="msghe mb-3">
-                            <h5 class="mb-0"><b>Usuario:</b></h5>
-                            <p class="mb-0">Lorem ipsum dolor sit.</p>
-                        </div>
+                        ?>
 
                     </div>
 
                     <div class="msgsend">
-                        <textarea name="msgcontent" rows="2" class="form-control"></textarea>
+                        <textarea name="msgcontent" rows="1" class="form-control" placeholder="Wirte a message..."></textarea>
                         <input type="submit" value="Enviar" class="btn btn-primary btn-block">
                     </div>
     

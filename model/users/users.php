@@ -50,54 +50,6 @@
             
         }
 
-        //Crear nuevo chat
-        public static function addChat($hash, $joinhash) {
-
-            require_once("config/connection.php");
-            
-            //Hacemos la conexión
-            $db = Connection::connect();
-
-            //Consulta
-            $sql_verify = "SELECT * FROM chats WHERE hash1 = :hash OR hash2 = :hash";
-
-            //Preparar consulta
-            $resultado_verify = $db->prepare($sql_verify);
-
-            //Ejecutar consulta
-            $resultado_verify->execute(array(":hash"=>$hash));
-
-            //Contar usuario
-            $count_verify = $resultado_verify->rowCount();
-
-            if ($count_verify != 0) {
-                
-                ///Consulta
-                $sql = "INSERT INTO `chats`(`hash1`, `hash2`, `date`) VALUES (:hash1 , :hash2 , NOW())";
-    
-                //Preparar consulta
-                $resultado = $db->prepare($sql);
-    
-                //Ejecutar consulta
-                $resultado->execute(array(":hash1"=>$hash, ":hash2"=>$joinhash));
-    
-                //Verificar que si se haya ingresado
-                $count = $resultado->rowCount();
-    
-                //Si encontró el usuario, devuielve el true
-                if ($count > 0) {
-                    return true;
-                }else {
-                    return false;
-                }
-
-            }else {
-                return true;
-            }
-
-            
-        }
-
         //Ingresar usuario a la base de datos
         public function addUser() {
 

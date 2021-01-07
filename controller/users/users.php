@@ -57,42 +57,6 @@
 
         }
 
-        //Buscar usuario
-        public function join($hashjoin) {
-            
-            //Lamar el modelo usuario
-            require_once("model/users/users.php");
-
-            if ($hashjoin == $_COOKIE["hash"]) {
-                header("location:index.php?msg=error-hash");
-            }else {
-
-                //Verificamos que esté en la base de datos
-                $result = Users_Model::searchUser($hashjoin);
-    
-                //Si no existe
-                if (!$result) {
-                    require_once("view/chat.php");
-                    header("location:index.php?msg=user-not-found");
-                }else {
-    
-                    //Establecer cookie del chat privado
-                    setcookie("join", $hashjoin, time()+3600000, "localhost/chat-hidden/");
-    
-                    ///Tomar hash
-                    $hash = $_COOKIE["hash"];
-    
-                    //Añadir nuevo chat
-                    Users_Model::addChat($hash, $hashjoin);
-                    header("location:index.php");
-    
-                }
-
-            }
-
-
-        }
-
         //Mostrar home
         public function userNew ($nick, $hash) {
             
