@@ -34,7 +34,7 @@
         <div class="container">
             <div class="mt-4 mx-auto p-5 border rounded bg-white">
                 <h2 class="d-block text-center">Welcome <?php echo $user->nick; ?></h2>
-    
+                <span class="d-block my-3">Your hash is: <code><?php echo $_COOKIE["hash"]; ?></code></span>
                 <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" id="form-chat" class="mx-auto">
     
                     <?php 
@@ -43,7 +43,12 @@
                         if ($msg == "user-not-found") {
                             echo '
                             <div class="alert alert-danger" role="alert">
-                                <strong>¡Ups!</strong> No se ha encontrado el usuario
+                                <strong>¡Ops!</strong> User not found
+                            </div>';
+                        }else if ($msg == "error-hash") {
+                            echo '
+                            <div class="alert alert-danger" role="alert">
+                                <strong>¡Ops!</strong> Itś your hash
                             </div>';
                         }
 

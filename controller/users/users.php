@@ -15,6 +15,19 @@
                 //Mostrar el formulario de inicio de sesión
                 require_once("view/new-user.php");
                 
+            }else if(isset($_COOKIE["join"])) {
+
+                //Tomamos el hash de la cookie
+                $hash = $_COOKIE["hash"];
+
+                //Verificamos que esté en la base de datos
+                $result = Users_Model::searchUser($hash);
+
+                //Crear instancia de usuario
+                $user = new Users_Model($result, $hash);
+
+                require_once("view/chat-join.php");
+
             }else {
                 
                 //Tomamos el hash de la cookie
@@ -45,21 +58,38 @@
         }
 
         //Buscar usuario
-        public function join($hash) {
+        public function join($hashjoin) {
             
             //Lamar el modelo usuario
             require_once("model/users/users.php");
 
-            //Verificamos que esté en la base de datos
-            $result = Users_Model::searchUser($hash);
-
-            //Si no existe
-            if (!$result) {
-                require_once("view/chat.php");
-                header("location:index.php?msg=user-not-found");
+            if ($hashjoin == $_COOKIE["hash"]) {
+                header("location:index.php?msg=error-hash");
             }else {
-                require_once("view/chat-join.php");
+
+                //Verificamos que esté en la base de datos
+                $result = Users_Model::searchUser($hashjoin);
+    
+                //Si no existe
+                if (!$result) {
+                    require_once("view/chat.php");
+                    header("location:index.php?msg=user-not-found");
+                }else {
+    
+                    //Establecer cookie del chat privado
+                    setcookie("join", $hashjoin, time()+3600000, "localhost/chat-hidden/");
+    
+                    ///Tomar hash
+                    $hash = $_COOKIE["hash"];
+    
+                    //Añadir nuevo chat
+                    Users_Model::addChat($hash, $hashjoin);
+                    header("location:index.php");
+    
+                }
+
             }
+
 
         }
 
@@ -81,9 +111,9 @@
                 //Establecer cookie del token
                 setcookie("hash", $hash, time()+3600000, "localhost/chat-hidden/");
 
-                require_once("view/chat.php");
+                header("location:index.php");
             }else {
-                require_once("view/new-user.php");
+                header("location:index.php");
             }
 
         }
@@ -105,6 +135,7 @@
 
                 //Eliminar hash
                 setcookie("hash", "", time()-1);
+                setcookie("join", "", time()-1);
 
                 //Ir a inicio
                 header("location:index.php");
@@ -121,6 +152,7 @@
                 if ($destroy) {
                     //Eliminar hash
                     setcookie("hash", "", time()-1);
+                    setcookie("join", "", time()-1);
                 }
 
                 //Ir al inicio

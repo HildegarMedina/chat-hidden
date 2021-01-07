@@ -24,10 +24,42 @@
         <div class="container">
             <div class="mt-4 mx-auto p-5 border rounded bg-white">
                 <h2 class="d-block text-center">Welcome <?php echo $user->nick; ?></h2>
+                <span class="d-block my-3">Your hash is: <code><?php echo $_COOKIE["hash"]; ?></code></span>
+                <form action="#" method="POST" id="chat-join" class="mx-auto mb-4">
     
-                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" id="form-chat" class="mx-auto">
-    
-                  
+                    <div class="messages">
+                    
+                        <div class="msgme mb-3">
+                            <h5 class="mb-0"><b>Usuario:</b></h5>
+                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, officia.</p>
+                        </div>
+
+                        <div class="msghe mb-3">
+                            <h5 class="mb-0"><b>Usuario:</b></h5>
+                            <p class="mb-0">Lorem ipsum dolor sit.</p>
+                        </div>
+
+                        <div class="msgme mb-3">
+                            <h5 class="mb-0"><b>Usuario:</b></h5>
+                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, officia.</p>
+                        </div>
+
+                        <div class="msghe mb-3">
+                            <h5 class="mb-0"><b>Usuario:</b></h5>
+                            <p class="mb-0">Lorem ipsum dolor sit.</p>
+                        </div>
+
+                        <div class="msghe mb-3">
+                            <h5 class="mb-0"><b>Usuario:</b></h5>
+                            <p class="mb-0">Lorem ipsum dolor sit.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="msgsend">
+                        <textarea name="msgcontent" rows="2" class="form-control"></textarea>
+                        <input type="submit" value="Enviar" class="btn btn-primary btn-block">
+                    </div>
     
                 </form>
 
