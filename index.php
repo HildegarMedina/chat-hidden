@@ -2,10 +2,27 @@
 
     //Llamar al controlador
     require_once("controller/users/users.php");
-    require_once("controller/users/users.php");
+    require_once("controller/chat/chat.php");
     
     //Instancia controlador usuario
     $user = new Users_Controller();
+
+    //Si se envió un mensaje
+    if (isset($_POST["msg"])) {
+
+        //Obtenemos los datos
+        $msg = $_POST["msg"];
+
+        //Enviar mensaje
+        $resultado = Chat_Controller::sendMsg($msg);
+
+        if ($resultado) {
+            die("success");
+        }else {
+            die("error");
+        }
+
+    }
 
     //En caso de que exista la cookie
     if (isset($_COOKIE["hash"])) {

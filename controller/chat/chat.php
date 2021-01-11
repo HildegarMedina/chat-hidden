@@ -58,4 +58,20 @@
 
         }
 
+        //Enviar mensaje
+        public static function sendMsg($msg) {
+
+            //Lamar el modelo usuario
+            require_once("model/users/users.php");
+
+            //Llamar el modelo chat
+            require_once("model/chat/chat.php");
+
+            //Buscar el nick
+            $nick = Users_Model::searchUser($_COOKIE["hash"]);
+
+            //Mostrar mensajes
+            return Chat_Model::sendMsg($msg, $nick);
+        }
+
     }
