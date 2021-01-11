@@ -14,3 +14,31 @@ body, html {
 #hash {
     background: #f7f7f7 !important;
 }
+#chat-join {
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    padding: 0;
+}
+.messages {
+    overflow: auto;
+    max-height: calc(100vh - 450px);
+    background: #f3f7ff;
+    padding: 25px;
+}
+.msgme {
+    display: inline-block;
+    width: 90%;
+    background: #2975c1;
+    border-radius: 10px;
+    color: #fff;
+    padding: 20px;
+}
+.msghe {
+    display: inline-block;
+    width: 90%;
+    margin-left: 10%;
+    background: #343a40;
+    border-radius: 10px;
+    color: #fff;
+    padding: 20px;
+}

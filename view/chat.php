@@ -1,5 +1,15 @@
+<?php 
+
+    //Si existe algún mensaje, almacenalo
+    if (isset($_GET["msg"])) {
+        $msg = $_GET["msg"];
+    }else {
+        $msg = "";
+    }
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,12 +34,29 @@
         <div class="container">
             <div class="mt-4 mx-auto p-5 border rounded bg-white">
                 <h2 class="d-block text-center">Welcome <?php echo $user->nick; ?></h2>
+                <span class="d-block my-3">Your hash is: <code><?php echo $_COOKIE["hash"]; ?></code></span>
+                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" id="form-chat" class="mx-auto">
     
-                <form action="#" id="form-chat" class="mx-auto">
-    
+                    <?php 
+
+                        //Si el mensaje es de error
+                        if ($msg == "user-not-found") {
+                            echo '
+                            <div class="alert alert-danger" role="alert">
+                                <strong>¡Ops!</strong> User not found
+                            </div>';
+                        }else if ($msg == "error-hash") {
+                            echo '
+                            <div class="alert alert-danger" role="alert">
+                                <strong>¡Ops!</strong> Itś your hash
+                            </div>';
+                        }
+
+
+                    ?>
                     <div class="form-group">
                         <label for="chat-with">Chat with...</label>
-                        <input type="text" class="form-control" id="chat-with" placeholder="hash...">
+                        <input type="text" class="form-control" name="hash" id="chat-with" placeholder="hash...">
                     </div>
     
                     <div class="form-group">

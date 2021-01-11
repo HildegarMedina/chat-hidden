@@ -87,6 +87,15 @@
             $db = Connection::connect();
 
             //Consulta
+            $sql_chat = "DELETE FROM chats WHERE hash1 = :hash OR hash2 = :hash";
+
+            //Preparar consulta
+            $resultado_chat = $db->prepare($sql_chat);
+
+            //Ejecutar consulta
+            $resultado_chat->execute(array(":hash"=>$this->hash));
+
+            //Consulta
             $sql = "DELETE FROM users WHERE hash = :hash";
 
             //Preparar consulta

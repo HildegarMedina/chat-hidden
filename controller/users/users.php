@@ -2,7 +2,6 @@
 
     //Clase user
     class Users_Controller {
-
         
         //Mostrar home
         public function home () {
@@ -16,6 +15,19 @@
                 //Mostrar el formulario de inicio de sesión
                 require_once("view/new-user.php");
                 
+            }else if(isset($_COOKIE["join"])) {
+
+                //Tomamos el hash de la cookie
+                $hash = $_COOKIE["hash"];
+
+                //Verificamos que esté en la base de datos
+                $result = Users_Model::searchUser($hash);
+
+                //Crear instancia de usuario
+                $user = new Users_Model($result, $hash);
+
+                require_once("view/chat-join.php");
+
             }else {
                 
                 //Tomamos el hash de la cookie
@@ -63,9 +75,9 @@
                 //Establecer cookie del token
                 setcookie("hash", $hash, time()+3600000, "localhost/chat-hidden/");
 
-                require_once("view/chat.php");
+                header("location:index.php");
             }else {
-                require_once("view/new-user.php?msg=error");
+                header("location:index.php");
             }
 
         }
@@ -87,6 +99,7 @@
 
                 //Eliminar hash
                 setcookie("hash", "", time()-1);
+                setcookie("join", "", time()-1);
 
                 //Ir a inicio
                 header("location:index.php");
@@ -103,6 +116,7 @@
                 if ($destroy) {
                     //Eliminar hash
                     setcookie("hash", "", time()-1);
+                    setcookie("join", "", time()-1);
                 }
 
                 //Ir al inicio
